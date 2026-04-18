@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" th:href="@{/admin.css}" />
+  </head>
+
+  <body>
+    <div class="dashboard">
+      <main class="main">
+        <header class="topbar">
+          <h1>Contact Messages</h1>
+
+          <div class="admin-profile">
+            <span th:text="${adminName}">Admin</span>
+            <img th:src="@{/founder.jpeg}" />
+            <button class="logout-btn" onclick="logout()">Logout</button>
+          </div>
+        </header>
+
+        <!-- Stats -->
+        <section class="stats">
+          <div class="card">
+            <h3>Total Messages</h3>
+            <p th:text="${totalMessages}"></p>
+          </div>
+
+          <div class="card">
+            <h3>New Messages</h3>
+            <p th:text="${newMessages}"></p>
+          </div>
+
+          <div class="card">
+            <h3>Viewed</h3>
+            <p th:text="${replied}"></p>
+          </div>
+
+          <div class="card">
+            <h3>Pending</h3>
+            <p th:text="${pending}"></p>
+          </div>
+        </section>
+
+        <div class="table-tools">
+          <div class="search-box">
+            <span class="search-icon">🔍</span>
+            <input
+              type="text"
+              id="searchInput"
+              placeholder="Search name, email, company..."
+              onkeyup="searchContacts()"
+            />
+          </div>
+        </div>
+
+        <!-- Table -->
+        <section class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Fields</th>
+                <th>Company</th>
+                <th>Message</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr
+                th:each="contact : ${contacts}"
+                th:attr="data-status=${contact.status}"
+                th:classappend="${contact.status} ? 'row-viewed' : 'row-new'"
+              >
+                <td th:text="${contact.name}"></td>
+                <td th:text="${contact.email}"></td>
+                <td th:text="${contact.phone}"></td>
+                <td th:text="${contact.fields}"></td>
+                <td th:text="${contact.company}"></td>
+                <td th:text="${#strings.abbreviate(contact.message,40)}"></td>
+
+                <td>
+                  <button
+                    class="view"
+                    th:attr="data-id=${contact.id}"
+                    onclick="openEditModal(this)"
+                  >
+                    View
+                  </button>
+
+                  <button
+                    class="delete"
+                    th:attr="data-id=${contact.id}"
+                    onclick="deleteContact(this)"
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <!-- Popup Modal -->
+
+        <div id="editModal" class="modal">
+          <div class="modal-content">
+            <span class="close" onclick="closeModal()">×</span>
+
+            <h2>Edit Contact</h2>
+
+            <div class="status-container">
+              <span id="statusBadge" class="status-badge new">New</span>
+            </div>
+
+            <input type="hidden" id="contactId" />
+
+            <label>Name</label>
+            <input type="text" id="name" />
+
+            <label>Email</label>
+            <input type="email" id="email" />
+
+            <label>Phone</label>
+            <input type="text" id="phone" />
+
+            <label>Fields</label>
+            <input type="text" id="fields" />
+
+            <label>Company</label>
+            <input type="text" id="company" />
+
+            <label>Message</label>
+            <textarea id="message"></textarea>
+
+            <label>Created At</label>
+            <input type="text" id="createdAt" readonly />
+
+            <button class="update-btn" onclick="updateContact()">Update</button>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script>
+
+      function formatDate(dateStr) {
+        const d = new Date(dateStr);
+        return d
+          .toLocaleString("en-GB", {
+            day: "2-digit",
+            month: "2-digit",
+            year: "numeric",
+            hour: "2-digit",
+            minute: "2-digit",
+            second: "2-digit",
+            hour12: true,
+          })
+          .replaceAll("/", "-");
+      }
+
+      function openEditModal(button) {
+        const id = button.getAttribute("data-id");
+        viewed(id);
+        fetch("/contacts/" + id)
+          .then((res) => res.json())
+
+          .then((data) => {
+            document.getElementById("contactId").value = data.id;
+            document.getElementById("name").value = data.name;
+            document.getElementById("email").value = data.email;
+            document.getElementById("phone").value = data.phone;
+            document.getElementById("fields").value = data.fields;
+            document.getElementById("company").value = data.company;
+            document.getElementById("message").value = data.message;
+            document.getElementById("createdAt").value = formatDate(
+              data.createdAt,
+            );
+
+            const badge = document.getElementById("statusBadge");
+
+            if (data.status) {
+              badge.innerText = "Viewed";
+              badge.classList.remove("new");
+              badge.classList.add("viewed");
+            } else {
+              badge.innerText = "New";
+            }
+
+            document.getElementById("editModal").style.display = "flex";
+          });
+      }
+
+      function closeModal() {
+        document.getElementById("editModal").style.display = "none";
+        location.reload();
+      }
+
+      function updateContact() {
+        const id = document.getElementById("contactId").value;
+
+        const contact = {
+          name: document.getElementById("name").value,
+          email: document.getElementById("email").value,
+          phone: document.getElementById("phone").value,
+          fields: document.getElementById("fields").value,
+          company: document.getElementById("company").value,
+          message: document.getElementById("message").value,
+          status: true,
+        };
+
+        fetch("/contacts/" + id, {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+<!--            [header]: token,-->
+          },
+          body: JSON.stringify(contact),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            alert("Contact Updated");
+            location.reload();
+          });
+      }
+
+      function deleteContact(button) {
+        const id = button.getAttribute("data-id");
+
+        if (confirm("Delete this contact?")) {
+          fetch("/contacts/" + id, {
+            method: "DELETE",
+            headers: {
+
+            },
+          }).then(() => {
+            alert("Contact Deleted");
+            location.reload();
+          });
+        }
+      }
+
+      function viewed(id) {
+        const contact = {
+          status: true,
+        };
+
+        fetch("/contacts/" + id, {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(contact),
+        })
+          .then((res) => res.json())
+          .then();
+      }
+
+      function logout() {
+        fetch("/logout", {
+          method: "POST",
+          headers: {
+
+          },
+        }).then(() => {
+          window.location.href = "/login?logout";
+        });
+      }
+
+      function searchContacts() {
+        const input = document
+          .getElementById("searchInput")
+          .value.toLowerCase();
+        const rows = document.querySelectorAll("tbody tr");
+
+        rows.forEach((row) => {
+          const text = row.innerText.toLowerCase();
+
+          if (text.includes(input)) {
+            row.style.display = "";
+          } else {
+            row.style.display = "none";
+          }
+        });
+      }
+      function sortByStatus() {
+        const tbody = document.querySelector("tbody");
+        const rows = Array.from(tbody.querySelectorAll("tr"));
+
+        rows.sort((a, b) => {
+          const statusA = a.getAttribute("data-status");
+          const statusB = b.getAttribute("data-status");
+
+          if (statusA === statusB) return 0;
+          if (statusA === "false") return -1;
+          return 1;
+        });
+
+        rows.forEach((row) => tbody.appendChild(row));
+      }
+
+      window.onload = function () {
+        sortByStatus();
+      };
+    </script>
+  </body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login | MedCore</title>
+
+    <style>
+        :root{
+        --primary:#0957de;
+        --primary-light:#bcd3ff9e;
+        --primary-dark:#07388d;
+        --accent:#e6f0ff;
+        }
+
+        *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+        font-family:Arial, Helvetica, sans-serif;
+        }
+
+        .login{
+        height:100vh;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        background: linear-gradient(270deg,#0957de,#07388d,#3b7cff);
+        background-size:600% 600%;
+        animation: gradientMove 10s ease infinite;
+        }
+
+        @keyframes gradientMove{
+        0%{background-position:0% 50%}
+        50%{background-position:100% 50%}
+        100%{background-position:0% 50%}
+        }
+
+        .login-container{
+        width:360px;
+        padding:40px;
+        border-radius:12px;
+        background:rgba(255,255,255,0.15);
+        backdrop-filter: blur(10px);
+        box-shadow:0 10px 40px rgba(0,0,0,0.25);
+        color:white;
+        }
+
+        .login-container h2{
+        text-align:center;
+        margin-bottom:25px;
+        }
+
+        .input-group{
+        position:relative;
+        margin-bottom:25px;
+        }
+
+        .input-group input{
+        width:100%;
+        padding:12px;
+        border:none;
+        outline:none;
+        border-radius:6px;
+        background:rgba(255,255,255,0.2);
+        color:white;
+        font-size:14px;
+        }
+
+        .input-group label{
+        position:absolute;
+        left:12px;
+        top:12px;
+        font-size:14px;
+        color:#ddd;
+        transition:0.3s;
+        pointer-events:none;
+        }
+
+        .input-group input:focus + label,
+        .input-group input:valid + label{
+        top:-8px;
+        left:8px;
+        font-size:12px;
+        background:var(--primary-dark);
+        padding:2px 6px;
+        border-radius:4px;
+        }
+
+        .login-btn{
+        width:100%;
+        padding:12px;
+        border:none;
+        border-radius:6px;
+        background:var(--primary);
+        color:white;
+        font-size:16px;
+        cursor:pointer;
+        transition:0.3s;
+        }
+
+        .login-btn:hover{
+        background:var(--primary-dark);
+        transform:translateY(-2px);
+        box-shadow:0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        .error, .success{
+        margin-top:15px;
+        padding:10px;
+        border-radius:6px;
+        text-align:center;
+        font-size:14px;
+        animation:fadeIn 0.4s ease;
+        }
+
+        .error{ background:#ff4d4d; }
+        .success{ background:#2ecc71; }
+
+        @keyframes fadeIn{
+        from{opacity:0; transform:translateY(-5px);}
+        to{opacity:1; transform:translateY(0);}
+        }
+    </style>
+
+</head>
+
+<body class="login">
+
+<div class="login-container">
+
+    <h2>Admin Login</h2>
+
+    <!-- th:action automatically injects the CSRF token, no manual hidden input needed -->
+    <form th:action="@{/login}" method="post">
+
+        <div class="input-group">
+            <input type="text" name="username" required />
+            <label>Username</label>
+        </div>
+
+        <div class="input-group">
+            <input type="password" name="password" required />
+            <label>Password</label>
+        </div>
+
+        <button type="submit" class="login-btn">Login</button>
+
+    </form>
+
+    <p class="error" th:if="${param.error}">
+        Invalid username or password
+    </p>
+
+    <p class="success" th:if="${param.logout}">
+        Logged out successfully
+    </p>
+
+</div>
+
+</body>
+</html>

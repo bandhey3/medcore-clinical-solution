@@ -1,0 +1,696 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>
+      MedCore Clinical Solution | Clinical Research & Medical Documentation
+      Services
+    </title>
+
+    <meta
+      name="description"
+      content="MedCore Clinical Solution provides professional clinical research support, medical documentation, medico-legal services, and healthcare equipment supply for hospitals, pharmaceutical companies, law firms, and medical research organizations."
+    />
+
+    <meta
+      name="keywords"
+      content="clinical research support services, medical documentation services, medico legal services, clinical documentation experts, clinical trial support services, medical record review services, healthcare documentation solutions, medical research consulting, clinical research company, medico legal consulting services, healthcare documentation services, clinical research support for pharmaceutical companies, medical case review services, clinical trial documentation services, medical expert consultation services"
+    />
+
+    <meta name="author" content="MedCore Clinical Solution" />
+    <meta name="robots" content="index, follow" />
+    <meta name="language" content="English" />
+    <meta name="revisit-after" content="7 days" />
+    <meta name="theme-color" content="#0957de" />
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://www.medcoreclinicalsolution.com/" />
+
+    <!-- Open Graph (Facebook / LinkedIn) -->
+    <meta property="og:title" content="MedCore Clinical Solution" />
+    <meta
+      property="og:description"
+      content="Professional clinical research support, medical documentation, medico-legal services, and healthcare equipment supply."
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://www.medcoreclinicalsolution.com/"
+    />
+    <meta
+      property="og:image"
+      content="https://www.medcoreclinicalsolution.com/images/preview.jpg"
+    />
+    <meta property="og:site_name" content="MedCore Clinical Solution" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="MedCore Clinical Solution" />
+    <meta
+      name="twitter:description"
+      content="Clinical research support, medical documentation, and medico-legal services for healthcare organizations."
+    />
+    <meta
+      name="twitter:image"
+      content="https://www.medcoreclinicalsolution.com/images/preview.jpg"
+    />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" th:href="@{/favicon.png}" />
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" th:href="@{/index.css}" />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <header class="navbar">
+      <div class="logo">
+        <img th:src="@{/logo.jpeg}" alt="MEDCORE CLINICAL SOLUTION Logo" />
+      </div>
+
+      <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+      <nav class="nav" id="navMenu">
+        <ul>
+          <li><a href="#home" onclick="closeMenu()">Home</a></li>
+          <li><a href="#about" onclick="closeMenu()">About</a></li>
+          <li><a href="#services" onclick="closeMenu()">Services</a></li>
+          <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <div class="overlay" id="overlay" onclick="closeMenu()"></div>
+
+    <main id="home">
+      <section class="hero">
+        <div class="hero-container">
+          <div class="hero-left">
+            <span class="tag"> From Neeraj Barik,</span>
+
+            <h1>
+              Welcome to <br />
+              MedCore Clinical Solution.
+            </h1>
+            <p>
+              <span><i class="fa-solid fa-plus plusIcon"></i> </span>
+              MedCore Clinical Solution is a trusted provider of clinical
+              research, medical documentation, medico-legal support, and
+              healthcare equipment supply services. We deliver accurate,
+              compliant, and professional clinical solutions tailored for
+              hospitals, law firms, and pharmaceutical companies worldwide.
+            </p>
+            <p>
+              <span><i class="fa-solid fa-plus plusIcon"></i> </span>
+              Clinical research and documentation services are essential in
+              modern healthcare, helping ensure patient safety, regulatory
+              compliance, and the development of new medical treatments.
+            </p>
+
+            <a href="#contact" class="hero-btn">Contact Us →</a>
+          </div>
+
+          <div class="hero-right">
+            <img th:src="@{/14.jpg}" alt="doctor" />
+          </div>
+        </div>
+      </section>
+      <!-- Hero Section End -->
+
+      <section class="mission-vision">
+        <!-- Mission -->
+        <div class="mv-container">
+          <div class="mv-text">
+            <h2>Our Mission</h2>
+            <p>
+              To provide reliable, precise, and professional clinical and
+              medico-legal solutions that empower healthcare providers, law
+              firms, and pharmaceutical organizations.
+            </p>
+          </div>
+
+          <div class="mv-image">
+            <img th:src="@{/mission.jpg}" alt="Our Mission" />
+          </div>
+        </div>
+
+        <!-- Vision -->
+        <div class="mv-container reverse">
+          <div class="mv-text">
+            <h2>Our Vision</h2>
+            <p>
+              To become a globally recognized leader in clinical research
+              support, medical documentation, and healthcare solutions.
+            </p>
+          </div>
+
+          <div class="mv-image">
+            <img th:src="@{/vision.jpg}" alt="Our Vision" />
+          </div>
+        </div>
+      </section>
+      <!-- Mission and Vision End -->
+
+      <section class="why-choose-us">
+        <div class="section-title">
+          <h2>Why Choose Us</h2>
+          <p>
+            Delivering trusted and high-quality clinical solutions for
+            healthcare and legal professionals.
+          </p>
+        </div>
+
+        <div class="choose-container">
+          <div class="choose-card">
+            <span><i class="fas fa-user-md"></i></span>
+            <h3>Expert Professionals</h3>
+            <p>
+              Experienced clinical documentation specialists ensuring reliable
+              medical records.
+            </p>
+          </div>
+
+          <div class="choose-card">
+            <span><i class="fas fa-check-circle"></i></span>
+            <h3>High Accuracy</h3>
+            <p>
+              Strict quality assurance processes guarantee precision and
+              reliability.
+            </p>
+          </div>
+
+          <div class="choose-card">
+            <span><i class="fas fa-clock"></i></span>
+            <h3>Fast Turnaround</h3>
+            <p>
+              Efficient workflows help us deliver services quickly without
+              compromising quality.
+            </p>
+          </div>
+
+          <div class="choose-card">
+            <span><i class="fas fa-shield-alt"></i></span>
+            <h3>Global Compliance</h3>
+            <p>
+              All services follow international medical documentation standards.
+            </p>
+          </div>
+
+          <div class="choose-card">
+            <span><i class="fas fa-dollar-sign"></i></span>
+            <h3>Competitive Pricing</h3>
+            <p>
+              Cost-effective solutions tailored for healthcare and legal
+              organizations.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- About Us -->
+
+      <section class="about-us" id="about">
+        <div class="about-header">
+          <h1>About MedCore Clinical Solution</h1>
+          <p>
+            MedCore Clinical Solution is a professional clinical services
+            company founded by <strong>Neeraj Barik</strong>, dedicated to
+            delivering high-quality clinical research support, medical
+            documentation, medico-legal services, and healthcare equipment
+            supply.
+          </p>
+        </div>
+
+        <div class="about-content">
+          <div class="about-text">
+            <p>
+              Modern clinical research plays a critical role in developing new
+              drugs, improving treatment outcomes, and advancing medical
+              science. Clinical trials help evaluate new treatments, procedures,
+              and diagnostic methods before approval and implementation.
+            </p>
+
+            <h3>We work with</h3>
+            <ul class="about-list">
+              <li>Hospitals and healthcare institutions</li>
+              <li>Pharmaceutical companies</li>
+              <li>Law firms and attorneys</li>
+              <li>Medical research organizations</li>
+            </ul>
+          </div>
+
+          <div class="founder-card">
+            <img th:src="@{/founder.jpeg}" alt="Neeraj Barik" />
+            <h3>Neeraj Barik</h3>
+            <p>Founder & Clinical Consultant</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="core-values">
+        <h2>Our Core Values</h2>
+
+        <div class="values-container">
+          <div class="value-card">
+            <span><i class="fa-solid fa-check"></i></span>
+            <h3>Accuracy</h3>
+          </div>
+
+          <div class="value-card">
+            <span><i class="fa-solid fa-scale-balanced"></i></span>
+            <h3>Integrity</h3>
+          </div>
+
+          <div class="value-card">
+            <span><i class="fa-solid fa-lock"></i></span>
+            <h3>Confidentiality</h3>
+          </div>
+
+          <div class="value-card">
+            <span><i class="fa-solid fa-star"></i></span>
+            <h3>Professional Excellence</h3>
+          </div>
+
+          <div class="value-card">
+            <span><i class="fa-solid fa-handshake"></i></span>
+            <h3>Client Satisfaction</h3>
+          </div>
+        </div>
+      </section>
+      <!-- About Us End -->
+
+      <section class="services" id="services">
+        <div class="services-header">
+          <h1>Our Services</h1>
+          <p>
+            We provide professional clinical, medico-legal, and healthcare
+            support services for hospitals, pharmaceutical companies, law firms,
+            and medical research organizations.
+          </p>
+        </div>
+
+        <div class="services-container">
+          <!-- Service 1 -->
+          <div class="service-card">
+            <span><i class="fa-solid fa-flask"></i></span>
+            <h3>Clinical Research for Hospitals</h3>
+
+            <ul>
+              <li>Clinical trial documentation</li>
+              <li>Research coordination</li>
+              <li>Data collection and analysis</li>
+              <li>Regulatory compliance</li>
+            </ul>
+
+            <p>
+              Clinical research helps develop new therapies, improve treatment
+              outcomes, and ensure safe medical practices.
+            </p>
+          </div>
+
+          <!-- Service 2 -->
+          <div class="service-card">
+            <span><i class="fa-solid fa-file-medical"></i></span>
+            <h3>Medical Summary & Demand Letters</h3>
+
+            <ul>
+              <li>Personal injury cases</li>
+              <li>Accident cases</li>
+              <li>Medical malpractice cases</li>
+            </ul>
+
+            <p>
+              Includes medical summaries, demand letters, medical record
+              analysis, and legally structured reports for attorneys.
+            </p>
+          </div>
+
+          <!-- Service 3 -->
+          <div class="service-card">
+            <span><i class="fa-solid fa-heart-pulse"></i></span>
+            <h3>Medical Equipment Supply</h3>
+
+            <ul>
+              <li>ICU monitors</li>
+              <li>Ventilators</li>
+              <li>Infusion pumps</li>
+              <li>Oxygen systems</li>
+              <li>Diagnostic equipment</li>
+              <li>Surgical equipment</li>
+            </ul>
+
+            <p>
+              High-quality equipment that supports patient monitoring, treatment
+              delivery, and critical care environments.
+            </p>
+          </div>
+
+          <!-- Service 4 -->
+          <div class="service-card">
+            <span><i class="fa-solid fa-notes-medical"></i></span>
+            <h3>Medical Chronology & Narrative Writing</h3>
+
+            <ul>
+              <li>Medical chronologies</li>
+              <li>Narrative summaries</li>
+              <li>Case analysis reports</li>
+            </ul>
+
+            <p>
+              Used by attorneys, insurance companies, and hospitals for detailed
+              case understanding and documentation.
+            </p>
+          </div>
+
+          <!-- Service 5 -->
+          <div class="service-card">
+            <span><i class="fa-solid fa-file-invoice-dollar"></i></span>
+            <h3>Medical Claim Documentation</h3>
+
+            <ul>
+              <li>Insurance claims documentation</li>
+              <li>Medical billing support</li>
+              <li>Legal case documentation</li>
+            </ul>
+
+            <p>
+              Complete support for claim preparation, documentation
+              organization, and billing assistance.
+            </p>
+          </div>
+
+          <!-- Service 6 -->
+          <div class="service-card">
+            <span><i class="fa-solid fa-capsules"></i></span>
+            <h3>Clinical Studies of Drugs</h3>
+
+            <ul>
+              <li>Drug clinical trial documentation</li>
+              <li>Study coordination</li>
+              <li>Regulatory compliance</li>
+              <li>Data analysis</li>
+            </ul>
+
+            <p>
+              Supporting pharmaceutical companies in evaluating drug safety and
+              effectiveness before regulatory approval.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Service End -->
+
+      <section class="target-clients">
+        <div class="clients-header">
+          <h2>Our Target Clients</h2>
+          <p>
+            We collaborate with healthcare institutions, legal professionals,
+            and pharmaceutical companies to deliver reliable clinical and
+            medico-legal solutions.
+          </p>
+        </div>
+
+        <div class="clients-container">
+          <!-- Hospitals -->
+          <div class="client-card">
+            <span><i class="fa-solid fa-hospital"></i></span>
+            <h3>Hospitals & Hospital Pharmacies</h3>
+            <ul>
+              <li>Clinical research support</li>
+              <li>Equipment supply</li>
+              <li>Medical documentation</li>
+            </ul>
+          </div>
+
+          <!-- Law Firms -->
+          <div class="client-card">
+            <span><i class="fa-solid fa-scale-balanced"></i></span>
+            <h3>US Law Firms & Advocates</h3>
+            <ul>
+              <li>Medical summaries</li>
+              <li>Demand letters</li>
+              <li>Medical chronologies</li>
+            </ul>
+          </div>
+
+          <!-- Healthcare Providers -->
+          <div class="client-card">
+            <span><i class="fa-solid fa-user-doctor"></i></span>
+            <h3>Indian Healthcare Providers</h3>
+            <ul>
+              <li>Hospital support</li>
+              <li>Clinical documentation</li>
+              <li>Equipment supply</li>
+            </ul>
+          </div>
+
+          <!-- Pharmaceutical Companies -->
+          <div class="client-card">
+            <span><i class="fa-solid fa-capsules"></i></span>
+            <h3>Pharmaceutical Companies</h3>
+            <ul>
+              <li>Drug clinical trial documentation</li>
+              <li>Research support</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      <!-- Target Clients End -->
+
+      <!--
+
+    <section class="blog">
+        <div class="blog-header">
+            <h1>Our Blog</h1>
+            <p>
+                Insights and articles about clinical research, medical
+                documentation, healthcare technologies, and medico-legal support
+                services.
+            </p>
+        </div>
+
+        <div class="blog-container">
+            <div class="blog-card">
+                <img th:src="@{/3.jpg}" alt=""/>
+                <div class="blog-content">
+                    <h3>Importance of Medical Chronology in Legal Cases</h3>
+                    <p>
+                        Medical chronologies help attorneys understand complex medical
+                        records by organizing events and treatments in a clear timeline.
+                    </p>
+                    <a href="#">Read More</a>
+                </div>
+            </div>
+
+            <div class="blog-card">
+                <img th:src="@{/3.jpg}" alt=""/>
+                <div class="blog-content">
+                    <h3>Clinical Trials and Drug Development Process</h3>
+                    <p>
+                        Clinical trials evaluate the safety and effectiveness of new
+                        drugs and therapies before they are approved for patient use.
+                    </p>
+                    <a href="#">Read More</a>
+                </div>
+            </div>
+
+            <div class="blog-card">
+                <img th:src="@{/3.jpg}" alt=""/>
+                <div class="blog-content">
+                    <h3>How Medical Documentation Helps Law Firms</h3>
+                    <p>
+                        Accurate medical documentation supports legal cases by providing
+                        structured medical summaries and evidence-based reports.
+                    </p>
+                    <a href="#">Read More</a>
+                </div>
+            </div>
+
+            <div class="blog-card">
+                <img th:src="@{/3.jpg}" alt=""/>
+                <div class="blog-content">
+                    <h3>Essential Medical Equipment in Modern Hospitals</h3>
+                    <p>
+                        Equipment like ICU monitors, ventilators, and infusion pumps are
+                        essential for patient monitoring and critical care.
+                    </p>
+                    <a href="#">Read More</a>
+                </div>
+            </div>
+
+            <div class="blog-card">
+                <img th:src="@{/3.jpg}" alt=""/>
+                <div class="blog-content">
+                    <h3>Clinical Research Trends</h3>
+                    <p>
+                        Modern clinical research focuses on precision medicine, digital
+                        trials, and advanced data analysis techniques.
+                    </p>
+                    <a href="#">Read More</a>
+                </div>
+            </div>
+
+            <div class="blog-card">
+                <img th:src="@{/3.jpg}" alt=""/>
+                <div class="blog-content">
+                    <h3>Clinical Laboratories & Documentation</h3>
+                    <p>
+                        Clinical laboratories and documentation play a major role in
+                        diagnosing diseases and supporting treatment decisions.
+                    </p>
+                    <a href="#">Read More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    -->
+
+      <!-- Blog End -->
+
+      <section class="contact" id="contact">
+        <div class="contact-header reveal">
+          <h2>Contact Us</h2>
+          <p>
+            Have questions about our clinical services or want to work with us?
+            Send us a message and our team will respond quickly.
+          </p>
+        </div>
+
+        <div class="contact-container">
+          <!-- Contact Info -->
+          <div class="contact-info reveal">
+            <div class="contact-image">
+              <img th:src="@{/logo.jpeg}" alt="Contact Support" />
+
+              <div class="contact-overlay">
+                <div class="contact-box">
+                  <i class="fa-solid fa-location-dot"></i>
+                  <div>
+                    <h4>Office Address</h4>
+                    <p>
+                      Golden trade centre office No. 101, New Rajendra Nagar,
+                      Raipur, Chhattisgarh, India, 492001
+                    </p>
+                  </div>
+                </div>
+
+                <div class="contact-box">
+                  <i class="fa-solid fa-envelope"></i>
+                  <div>
+                    <h4>Email</h4>
+                    <p>
+                      <a href="mailto:medcoreclinialsolution@gmail.com">
+                        medcoreclinialsolution@gmail.com
+                      </a>
+                    </p>
+                  </div>
+                </div>
+
+                <div class="contact-box">
+                  <i class="fa-solid fa-phone"></i>
+                  <div>
+                    <h4>Phone</h4>
+                    <p><a href="tel:+916261923102"> +91 626 192 3102 </a></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contact Form -->
+          <form
+            th:action="@{/contacts}"
+            th:object="${contact}"
+            method="post"
+            class="contact-form reveal"
+          >
+            <p
+              th:if="${success}"
+              th:text="${success}"
+              class="success-message"
+            ></p>
+
+            <div class="input-group">
+              <input type="text" th:field="*{name}" required />
+              <label>Full Name</label>
+            </div>
+
+            <div class="input-group">
+              <input type="email" th:field="*{email}" required />
+              <label>Email Address</label>
+            </div>
+
+            <div class="input-group">
+              <input type="tel" th:field="*{phone}" required />
+              <label>Phone Number</label>
+            </div>
+
+            <div class="input-group">
+              <input type="text" th:field="*{company}" required />
+              <label>Company</label>
+            </div>
+
+            <div class="input-group">
+              <input type="text" th:field="*{fields}" required />
+              <label>Fields</label>
+            </div>
+
+            <div class="input-group">
+              <textarea rows="4" th:field="*{message}" required></textarea>
+              <label>Your Message</label>
+            </div>
+
+            <button type="submit" class="contact-btn">Send Message</button>
+          </form>
+        </div>
+      </section>
+      <!-- Contact End -->
+    </main>
+
+    <footer>
+      <p>
+        &copy; <span></span> MedCore Clinical Solution. All rights reserved.
+      </p>
+    </footer>
+
+    <script>
+      function revealElements() {
+        const reveals = document.querySelectorAll(".reveal");
+
+        reveals.forEach((el) => {
+          const windowHeight = window.innerHeight;
+          const elementTop = el.getBoundingClientRect().top;
+
+          if (elementTop < windowHeight - 100) {
+            el.classList.add("active");
+          }
+        });
+      }
+
+      function toggleMenu() {
+        document.getElementById("navMenu").classList.toggle("active");
+        document.getElementById("overlay").classList.toggle("active");
+      }
+
+      function closeMenu() {
+        document.getElementById("navMenu").classList.remove("active");
+        document.getElementById("overlay").classList.remove("active");
+      }
+
+      window.addEventListener("scroll", revealElements);
+      revealElements();
+      // JavaScript for interactivity can be added here
+      let date = new Date().getFullYear();
+      document.querySelector("footer p span").textContent = `${date}`;
+    </script>
+  </body>
+</html>
